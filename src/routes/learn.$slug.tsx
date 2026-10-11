@@ -2,7 +2,7 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { findLearningArea } from "@/config/site";
 import { SubjectPlaceholder } from "@/components/coder-bhaiya/page-shell";
 
-export const Route = createFileRoute("/learn/")({
+export const Route = createFileRoute("/learn/$slug")({
   loader: ({ params }) => { const area = findLearningArea(params.slug); if (!area) throw notFound(); return { area }; },
   head: ({ loaderData }) => { const name = loaderData?.area.name ?? "Learning Path"; return { meta: [
     { title: `${name} — Coder Bhaiya` }, { name: "description", content: `A dedicated beginner-friendly ${name} learning area from Coder Bhaiya.` },
