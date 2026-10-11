@@ -1,0 +1,4 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { FlaskConical } from "lucide-react";
+import { FeaturePlaceholder } from "@/components/coder-bhaiya/page-shell";
+export const Route = createFileRoute("/coding-lab")({ head: () => ({ meta: [{ title: "Coding Lab — Coder Bhaiya" }, { name: "description", content: "A future workspace for understanding, debugging and practising code." }, { property: "og:title", content: "Coding Lab — Coder Bhaiya" }, { property: "og:description", content: "A focused workspace for future guided coding practice." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }), component: () => <FeaturePlaceholder eyebrow="Coding lab" title="A calm place to experiment with code." description="Guided code understanding, debugging and practice will arrive here in a future phase." icon={FlaskConical} /> });
