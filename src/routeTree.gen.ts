@@ -16,6 +16,7 @@ import { Route as DsaRouteImport } from './routes/dsa'
 import { Route as LearnRouteImport } from './routes/learn'
 import { Route as ProgrammingLanguagesRouteImport } from './routes/programming-languages'
 import { Route as VisualLearningRouteImport } from './routes/visual-learning'
+import { Route as LearnIndexRouteImport } from './routes/learn.index'
 import { Route as LearnSlugRouteImport } from './routes/learn.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -53,6 +54,11 @@ const VisualLearningRoute = VisualLearningRouteImport.update({
   path: '/visual-learning',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LearnIndexRoute = LearnIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => LearnRoute,
+} as any)
 const LearnSlugRoute = LearnSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -68,16 +74,17 @@ export interface FileRoutesByFullPath {
   '/programming-languages': typeof ProgrammingLanguagesRoute
   '/visual-learning': typeof VisualLearningRoute
   '/learn/$slug': typeof LearnSlugRoute
+  '/learn/': typeof LearnIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/coding-lab': typeof CodingLabRoute
   '/dsa': typeof DsaRoute
-  '/learn': typeof LearnRouteWithChildren
   '/programming-languages': typeof ProgrammingLanguagesRoute
   '/visual-learning': typeof VisualLearningRoute
   '/learn/$slug': typeof LearnSlugRoute
+  '/learn': typeof LearnIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -89,6 +96,7 @@ export interface FileRoutesById {
   '/programming-languages': typeof ProgrammingLanguagesRoute
   '/visual-learning': typeof VisualLearningRoute
   '/learn/$slug': typeof LearnSlugRoute
+  '/learn/': typeof LearnIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -101,16 +109,17 @@ export interface FileRouteTypes {
     | '/programming-languages'
     | '/visual-learning'
     | '/learn/$slug'
+    | '/learn/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/coding-lab'
     | '/dsa'
-    | '/learn'
     | '/programming-languages'
     | '/visual-learning'
     | '/learn/$slug'
+    | '/learn'
   id:
     | '__root__'
     | '/'
@@ -121,6 +130,7 @@ export interface FileRouteTypes {
     | '/programming-languages'
     | '/visual-learning'
     | '/learn/$slug'
+    | '/learn/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -184,6 +194,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VisualLearningRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/learn/': {
+      id: '/learn/'
+      path: '/'
+      fullPath: '/learn/'
+      preLoaderRoute: typeof LearnIndexRouteImport
+      parentRoute: typeof LearnRoute
+    }
     '/learn/$slug': {
       id: '/learn/$slug'
       path: '/$slug'
@@ -196,10 +213,12 @@ declare module '@tanstack/react-router' {
 
 interface LearnRouteChildren {
   LearnSlugRoute: typeof LearnSlugRoute
+  LearnIndexRoute: typeof LearnIndexRoute
 }
 
 const LearnRouteChildren: LearnRouteChildren = {
   LearnSlugRoute: LearnSlugRoute,
+  LearnIndexRoute: LearnIndexRoute,
 }
 
 const LearnRouteWithChildren = LearnRoute._addFileChildren(LearnRouteChildren)
