@@ -14,4 +14,19 @@ describe("App routing", () => {
 
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
   });
+
+  it.each([
+    "/learn",
+    "/programming-languages",
+    "/learn/python",
+    "/learn/cpp-programming",
+    "/dsa",
+    "/visual-learning",
+    "/coding-lab",
+    "/about",
+  ])("matches the requested destination at %s", (path) => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+    const matches = router.matchRoutes(path);
+    expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
+  });
 });

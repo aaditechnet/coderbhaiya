@@ -1,0 +1,4 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { BrainCircuit } from "lucide-react";
+import { FeaturePlaceholder } from "@/components/coder-bhaiya/page-shell";
+export const Route = createFileRoute("/visual-learning")({ head: () => ({ meta: [{ title: "Visual Learning — Coder Bhaiya" }, { name: "description", content: "A future visual learning engine for programming concepts and algorithms." }, { property: "og:title", content: "Visual Learning — Coder Bhaiya" }, { property: "og:description", content: "See programming concepts take shape visually." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }), component: () => <FeaturePlaceholder eyebrow="Visual learning" title="See the concept, not just the syntax." description="Interactive diagrams for arrays, pointers, trees and algorithms will live here." icon={BrainCircuit} /> });

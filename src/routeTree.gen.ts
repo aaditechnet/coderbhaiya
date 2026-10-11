@@ -10,33 +10,137 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as CodingLabRouteImport } from './routes/coding-lab'
+import { Route as DsaRouteImport } from './routes/dsa'
+import { Route as LearnRouteImport } from './routes/learn'
+import { Route as ProgrammingLanguagesRouteImport } from './routes/programming-languages'
+import { Route as VisualLearningRouteImport } from './routes/visual-learning'
+import { Route as LearnIndexRouteImport } from './routes/learn.index'
+import { Route as LearnSlugRouteImport } from './routes/learn.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CodingLabRoute = CodingLabRouteImport.update({
+  id: '/coding-lab',
+  path: '/coding-lab',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DsaRoute = DsaRouteImport.update({
+  id: '/dsa',
+  path: '/dsa',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LearnRoute = LearnRouteImport.update({
+  id: '/learn',
+  path: '/learn',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgrammingLanguagesRoute = ProgrammingLanguagesRouteImport.update({
+  id: '/programming-languages',
+  path: '/programming-languages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VisualLearningRoute = VisualLearningRouteImport.update({
+  id: '/visual-learning',
+  path: '/visual-learning',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LearnIndexRoute = LearnIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => LearnRoute,
+} as any)
+const LearnSlugRoute = LearnSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => LearnRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/coding-lab': typeof CodingLabRoute
+  '/dsa': typeof DsaRoute
+  '/learn': typeof LearnRouteWithChildren
+  '/programming-languages': typeof ProgrammingLanguagesRoute
+  '/visual-learning': typeof VisualLearningRoute
+  '/learn/$slug': typeof LearnSlugRoute
+  '/learn/': typeof LearnIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/coding-lab': typeof CodingLabRoute
+  '/dsa': typeof DsaRoute
+  '/programming-languages': typeof ProgrammingLanguagesRoute
+  '/visual-learning': typeof VisualLearningRoute
+  '/learn/$slug': typeof LearnSlugRoute
+  '/learn': typeof LearnIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/coding-lab': typeof CodingLabRoute
+  '/dsa': typeof DsaRoute
+  '/learn': typeof LearnRouteWithChildren
+  '/programming-languages': typeof ProgrammingLanguagesRoute
+  '/visual-learning': typeof VisualLearningRoute
+  '/learn/$slug': typeof LearnSlugRoute
+  '/learn/': typeof LearnIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/coding-lab'
+    | '/dsa'
+    | '/learn'
+    | '/programming-languages'
+    | '/visual-learning'
+    | '/learn/$slug'
+    | '/learn/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/coding-lab'
+    | '/dsa'
+    | '/programming-languages'
+    | '/visual-learning'
+    | '/learn/$slug'
+    | '/learn'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/coding-lab'
+    | '/dsa'
+    | '/learn'
+    | '/programming-languages'
+    | '/visual-learning'
+    | '/learn/$slug'
+    | '/learn/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  CodingLabRoute: typeof CodingLabRoute
+  DsaRoute: typeof DsaRoute
+  LearnRoute: typeof LearnRouteWithChildren
+  ProgrammingLanguagesRoute: typeof ProgrammingLanguagesRoute
+  VisualLearningRoute: typeof VisualLearningRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +152,85 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/coding-lab': {
+      id: '/coding-lab'
+      path: '/coding-lab'
+      fullPath: '/coding-lab'
+      preLoaderRoute: typeof CodingLabRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dsa': {
+      id: '/dsa'
+      path: '/dsa'
+      fullPath: '/dsa'
+      preLoaderRoute: typeof DsaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/learn': {
+      id: '/learn'
+      path: '/learn'
+      fullPath: '/learn'
+      preLoaderRoute: typeof LearnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programming-languages': {
+      id: '/programming-languages'
+      path: '/programming-languages'
+      fullPath: '/programming-languages'
+      preLoaderRoute: typeof ProgrammingLanguagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/visual-learning': {
+      id: '/visual-learning'
+      path: '/visual-learning'
+      fullPath: '/visual-learning'
+      preLoaderRoute: typeof VisualLearningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/learn/': {
+      id: '/learn/'
+      path: '/'
+      fullPath: '/learn/'
+      preLoaderRoute: typeof LearnIndexRouteImport
+      parentRoute: typeof LearnRoute
+    }
+    '/learn/$slug': {
+      id: '/learn/$slug'
+      path: '/$slug'
+      fullPath: '/learn/$slug'
+      preLoaderRoute: typeof LearnSlugRouteImport
+      parentRoute: typeof LearnRoute
+    }
   }
 }
 
+interface LearnRouteChildren {
+  LearnSlugRoute: typeof LearnSlugRoute
+  LearnIndexRoute: typeof LearnIndexRoute
+}
+
+const LearnRouteChildren: LearnRouteChildren = {
+  LearnSlugRoute: LearnSlugRoute,
+  LearnIndexRoute: LearnIndexRoute,
+}
+
+const LearnRouteWithChildren = LearnRoute._addFileChildren(LearnRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  CodingLabRoute: CodingLabRoute,
+  DsaRoute: DsaRoute,
+  LearnRoute: LearnRouteWithChildren,
+  ProgrammingLanguagesRoute: ProgrammingLanguagesRoute,
+  VisualLearningRoute: VisualLearningRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
