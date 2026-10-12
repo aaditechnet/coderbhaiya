@@ -12,9 +12,12 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as CodingLabRouteImport } from './routes/coding-lab'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as DebuggingRouteImport } from './routes/debugging'
 import { Route as DsaRouteImport } from './routes/dsa'
 import { Route as LearnRouteImport } from './routes/learn'
 import { Route as ProgrammingLanguagesRouteImport } from './routes/programming-languages'
+import { Route as QuizRouteImport } from './routes/quiz'
 import { Route as VisualLearningRouteImport } from './routes/visual-learning'
 import { Route as LearnIndexRouteImport } from './routes/learn.index'
 import { Route as LearnSlugRouteImport } from './routes/learn.$slug'
@@ -34,6 +37,16 @@ const CodingLabRoute = CodingLabRouteImport.update({
   path: '/coding-lab',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DebuggingRoute = DebuggingRouteImport.update({
+  id: '/debugging',
+  path: '/debugging',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DsaRoute = DsaRouteImport.update({
   id: '/dsa',
   path: '/dsa',
@@ -47,6 +60,11 @@ const LearnRoute = LearnRouteImport.update({
 const ProgrammingLanguagesRoute = ProgrammingLanguagesRouteImport.update({
   id: '/programming-languages',
   path: '/programming-languages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuizRoute = QuizRouteImport.update({
+  id: '/quiz',
+  path: '/quiz',
   getParentRoute: () => rootRouteImport,
 } as any)
 const VisualLearningRoute = VisualLearningRouteImport.update({
@@ -69,9 +87,12 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/coding-lab': typeof CodingLabRoute
+  '/dashboard': typeof DashboardRoute
+  '/debugging': typeof DebuggingRoute
   '/dsa': typeof DsaRoute
   '/learn': typeof LearnRouteWithChildren
   '/programming-languages': typeof ProgrammingLanguagesRoute
+  '/quiz': typeof QuizRoute
   '/visual-learning': typeof VisualLearningRoute
   '/learn/$slug': typeof LearnSlugRoute
   '/learn/': typeof LearnIndexRoute
@@ -80,8 +101,11 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/coding-lab': typeof CodingLabRoute
+  '/dashboard': typeof DashboardRoute
+  '/debugging': typeof DebuggingRoute
   '/dsa': typeof DsaRoute
   '/programming-languages': typeof ProgrammingLanguagesRoute
+  '/quiz': typeof QuizRoute
   '/visual-learning': typeof VisualLearningRoute
   '/learn/$slug': typeof LearnSlugRoute
   '/learn': typeof LearnIndexRoute
@@ -91,9 +115,12 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/coding-lab': typeof CodingLabRoute
+  '/dashboard': typeof DashboardRoute
+  '/debugging': typeof DebuggingRoute
   '/dsa': typeof DsaRoute
   '/learn': typeof LearnRouteWithChildren
   '/programming-languages': typeof ProgrammingLanguagesRoute
+  '/quiz': typeof QuizRoute
   '/visual-learning': typeof VisualLearningRoute
   '/learn/$slug': typeof LearnSlugRoute
   '/learn/': typeof LearnIndexRoute
@@ -104,9 +131,12 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/coding-lab'
+    | '/dashboard'
+    | '/debugging'
     | '/dsa'
     | '/learn'
     | '/programming-languages'
+    | '/quiz'
     | '/visual-learning'
     | '/learn/$slug'
     | '/learn/'
@@ -115,8 +145,11 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/coding-lab'
+    | '/dashboard'
+    | '/debugging'
     | '/dsa'
     | '/programming-languages'
+    | '/quiz'
     | '/visual-learning'
     | '/learn/$slug'
     | '/learn'
@@ -125,9 +158,12 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/coding-lab'
+    | '/dashboard'
+    | '/debugging'
     | '/dsa'
     | '/learn'
     | '/programming-languages'
+    | '/quiz'
     | '/visual-learning'
     | '/learn/$slug'
     | '/learn/'
@@ -137,9 +173,12 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   CodingLabRoute: typeof CodingLabRoute
+  DashboardRoute: typeof DashboardRoute
+  DebuggingRoute: typeof DebuggingRoute
   DsaRoute: typeof DsaRoute
   LearnRoute: typeof LearnRouteWithChildren
   ProgrammingLanguagesRoute: typeof ProgrammingLanguagesRoute
+  QuizRoute: typeof QuizRoute
   VisualLearningRoute: typeof VisualLearningRoute
 }
 
@@ -166,6 +205,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CodingLabRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/debugging': {
+      id: '/debugging'
+      path: '/debugging'
+      fullPath: '/debugging'
+      preLoaderRoute: typeof DebuggingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dsa': {
       id: '/dsa'
       path: '/dsa'
@@ -185,6 +238,13 @@ declare module '@tanstack/react-router' {
       path: '/programming-languages'
       fullPath: '/programming-languages'
       preLoaderRoute: typeof ProgrammingLanguagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quiz': {
+      id: '/quiz'
+      path: '/quiz'
+      fullPath: '/quiz'
+      preLoaderRoute: typeof QuizRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/visual-learning': {
@@ -227,9 +287,12 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   CodingLabRoute: CodingLabRoute,
+  DashboardRoute: DashboardRoute,
+  DebuggingRoute: DebuggingRoute,
   DsaRoute: DsaRoute,
   LearnRoute: LearnRouteWithChildren,
   ProgrammingLanguagesRoute: ProgrammingLanguagesRoute,
+  QuizRoute: QuizRoute,
   VisualLearningRoute: VisualLearningRoute,
 }
 export const routeTree = rootRouteImport
