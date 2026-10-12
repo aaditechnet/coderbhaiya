@@ -18,14 +18,16 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const browserLocale = window.navigator.language || "en";
-    const stored = window.localStorage.getItem(STORAGE_KEY);
+    let stored: string | null = null;
+    try { stored = window.localStorage.getItem(STORAGE_KEY); } catch { /* Browser storage is optional. */ }
     setLocale(browserLocale);
-    setLanguage(stored === "hi" || stored === "en" ? stored : detectLanguage(browserLocale));
+    setLanguage(stored === "hi" || stored === "en" || stored === "hinglish" ? stored : detectLanguage(browserLocale));
   }, []);
 
   const changeLanguage = (next: LanguageCode) => {
     setLanguage(next);
-    window.localStorage.setItem(STORAGE_KEY, next);
+    try { window.localStorage.setItem(STORAGE_KEY, next); } catch { /* Keep the selector usable without storage. */ }
+    document.documentElement.lang = next === "hi" ? "hi" : "en";
   };
 
   const value = useMemo(() => {
