@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { learningAreas } from "@/config/site";
 import { useLanguage } from "@/context/language-context";
+import { Mentor, useMentorCopy } from "@/components/coder-bhaiya/mentor";
 
 export const Route = createFileRoute("/programming-languages")({
   head: () => ({ meta: [

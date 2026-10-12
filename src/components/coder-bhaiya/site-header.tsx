@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { supportedLanguages, type LanguageCode } from "@/config/i18n";
 import { useLanguage } from "@/context/language-context";
+import { useMentorGuide } from "@/context/mentor-context";
 
 const nav = [
   { key: "home", to: "/" },
@@ -17,15 +18,17 @@ const nav = [
   { key: "visual", to: "/visual-learning" },
   { key: "lab", to: "/coding-lab" },
   { key: "about", to: "/about" },
+  { key: "dashboard", to: "/dashboard" },
 ] as const;
 
 export function SiteHeader() {
   const { language, setLanguage, text } = useLanguage();
+  const { step } = useMentorGuide();
   const [placeholder, setPlaceholder] = useState("");
 
   const LanguageSelect = ({ mobile = false }: { mobile?: boolean }) => (
     <Select value={language} onValueChange={(value) => setLanguage(value as LanguageCode)}>
-      <SelectTrigger className={mobile ? "h-11 w-full" : "h-10 w-[112px]"} aria-label="Choose language">
+      <SelectTrigger className={mobile ? "h-11 w-full" : "h-10 w-[124px]"} aria-label="Choose language">
         <Languages className="size-4 text-primary" />
         <SelectValue />
       </SelectTrigger>
@@ -40,15 +43,15 @@ export function SiteHeader() {
       <header className="sticky top-0 z-50 border-b border-border bg-header-backdrop backdrop-blur-xl">
         <div className="mx-auto flex h-[76px] max-w-[1480px] items-center gap-6 px-4 sm:px-6 lg:px-8">
           <Link to="/" aria-label="Coder Bhaiya home" className="shrink-0 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><BrandMark /></Link>
-          <nav className="hidden min-w-0 flex-1 items-center justify-center gap-1 xl:flex" aria-label="Main navigation">
+          <nav className="hidden min-w-0 flex-1 items-center justify-center gap-1 2xl:flex" aria-label="Main navigation">
             {nav.map((item) => <Link key={item.key} to={item.to} activeOptions={{ exact: item.to === "/" }} className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" activeProps={{ className: "bg-accent text-foreground" }}>{text[item.key]}</Link>)}
           </nav>
-          <div className="ml-auto hidden shrink-0 items-center gap-2 lg:flex">
+          <div className="ml-auto hidden shrink-0 items-center gap-2 md:flex">
             <LanguageSelect />
-            <Button variant="ghost" onClick={() => setPlaceholder("Sign In")}>{text.signIn}</Button>
-            <Button onClick={() => setPlaceholder("Sign Up")}>{text.signUp}</Button>
+            <Button variant="ghost" className={step === 1 ? "ring-2 ring-primary ring-offset-2 ring-offset-background" : ""} onClick={() => setPlaceholder("Sign In")}>{text.signIn}</Button>
+            <Button className={step === 1 ? "ring-2 ring-primary ring-offset-2 ring-offset-background" : ""} onClick={() => setPlaceholder("Sign Up")}>{text.signUp}</Button>
           </div>
-          <div className="ml-auto lg:hidden">
+          <div className="2xl:hidden">
             <Sheet>
               <SheetTrigger asChild><Button variant="outline" size="icon" aria-label="Open navigation menu"><Menu /></Button></SheetTrigger>
               <SheetContent className="w-[88vw] max-w-sm overflow-y-auto">
@@ -57,12 +60,13 @@ export function SiteHeader() {
                   {nav.map((item) => <SheetClose asChild key={item.key}><Link to={item.to} className="rounded-md px-3 py-3 text-base font-medium text-muted-foreground hover:bg-accent hover:text-foreground">{text[item.key]}</Link></SheetClose>)}
                 </nav>
                 <div className="mt-6 border-t border-border pt-6"><LanguageSelect mobile /></div>
-                <div className="mt-4 grid grid-cols-2 gap-2"><Button variant="outline" onClick={() => setPlaceholder("Sign In")}>{text.signIn}</Button><Button onClick={() => setPlaceholder("Sign Up")}>{text.signUp}</Button></div>
+                <div className={`mt-4 grid grid-cols-2 gap-2 ${step === 1 ? "rounded-md ring-2 ring-primary ring-offset-2 ring-offset-background" : ""}`}><Button variant="outline" onClick={() => setPlaceholder("Sign In")}>{text.signIn}</Button><Button onClick={() => setPlaceholder("Sign Up")}>{text.signUp}</Button></div>
               </SheetContent>
             </Sheet>
           </div>
         </div>
       </header>
+      {step === 1 && <div className="border-b border-primary/30 bg-card px-5 py-3 md:hidden"><div className="mx-auto flex max-w-7xl gap-3"><Button variant="outline" className="ring-2 ring-primary" onClick={() => setPlaceholder("Sign In")}>{text.signIn}</Button><Button className="ring-2 ring-primary" onClick={() => setPlaceholder("Sign Up")}>{text.signUp}</Button></div></div>}
       <ComingSoon open={Boolean(placeholder)} title={placeholder} onClose={() => setPlaceholder("")} />
     </>
   );

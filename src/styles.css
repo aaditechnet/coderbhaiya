@@ -222,3 +222,16 @@
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
+
+@layer components {
+  .mentor-scene { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; min-width: 0; }
+  .mentor-image { display: block; width: 100%; max-width: 292px; height: auto; border-radius: var(--radius-lg); object-fit: contain; }
+  .mentor-speech { width: 100%; max-width: 360px; border-left: 3px solid var(--primary); padding: .75rem 1rem; background: var(--primary-soft); border-radius: var(--radius-md); }
+  .mentor-inline { display: flex; align-items: center; gap: 1.25rem; min-width: 0; }
+  .mentor-inline .mentor-image { width: 100px; height: 110px; flex-shrink: 0; object-fit: cover; }
+  .mentor-inline .mentor-speech { max-width: none; }
+  .mentor-dock { position: sticky; bottom: 1rem; z-index: 40; display: flex; justify-content: flex-end; padding: 1rem; pointer-events: none; height: 88px; }
+  .mentor-dock > * { pointer-events: auto; }
+  .demo-code { display: block; overflow-x: auto; white-space: pre-wrap; overflow-wrap: anywhere; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--code); color: var(--code-text); padding: 1.5rem; font-family: var(--font-mono); font-size: .875rem; line-height: 1.8; }
+  @media (max-width: 640px) { .mentor-scene .mentor-image { max-width: 240px; } .mentor-inline { gap: .75rem; } .mentor-inline .mentor-image { width: 74px; height: 92px; } .mentor-inline .mentor-speech { padding: .5rem .75rem; } }
+}

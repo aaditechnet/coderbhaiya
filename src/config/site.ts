@@ -52,7 +52,7 @@ export const featureAreas = [
   { title: "Coding Lab", description: "A focused future workspace for understanding, debugging and practising code.", icon: FlaskConical, action: "Visit the lab", href: "/coding-lab", accent: "violet" },
   { title: "DSA Practice", description: "A dedicated path for building problem-solving skills step by step.", icon: GraduationCap, action: "Explore DSA", href: "/dsa", accent: "amber" },
   { title: "Algorithm Builder", description: "Explore algorithm steps, decisions and execution flow visually.", icon: Workflow, action: "See what’s coming", accent: "cyan" },
-  { title: "Student Dashboard", description: "A future home for completed lessons, goals and learning progress.", icon: LayoutDashboard, action: "See what’s coming", accent: "blue" },
+  { title: "Student Dashboard", description: "A preview of your learning home, with no invented progress.", icon: LayoutDashboard, action: "Preview your learning home", href: "/dashboard", accent: "blue" },
 ] as const;
 
 export const learningSteps = [

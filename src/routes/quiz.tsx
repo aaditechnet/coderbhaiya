@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { QuizPage } from "@/components/coder-bhaiya/practice-pages";
+export const Route = createFileRoute("/quiz")({ head: () => ({ meta: [{ title: "Sample Programming Quiz — Coder Bhaiya" }, { name: "description", content: "Check your understanding with a small programming quiz and honest session-only results." }, { property: "og:title", content: "Sample Programming Quiz — Coder Bhaiya" }, { property: "og:description", content: "Practise beginner concepts with encouraging feedback from Coder Bhaiya." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }), component: QuizPage });
