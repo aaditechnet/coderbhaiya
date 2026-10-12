@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { DashboardPage } from "@/components/coder-bhaiya/practice-pages";
+export const Route = createFileRoute("/dashboard")({ head: () => ({ meta: [{ title: "Student Dashboard Preview — Coder Bhaiya" }, { name: "description", content: "Explore courses and practice samples in a neutral student dashboard preview without invented progress." }, { property: "og:title", content: "Student Dashboard Preview — Coder Bhaiya" }, { property: "og:description", content: "Choose your next learning step with Coder Bhaiya." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }), component: DashboardPage });

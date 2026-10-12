@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { DebuggingPage } from "@/components/coder-bhaiya/practice-pages";
+export const Route = createFileRoute("/debugging")({ head: () => ({ meta: [{ title: "Debugging Practice — Coder Bhaiya" }, { name: "description", content: "Understand a Python error with a friendly, step-by-step debugging example." }, { property: "og:title", content: "Debugging Practice — Coder Bhaiya" }, { property: "og:description", content: "Learn how a spelling mismatch becomes a useful debugging clue." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }), component: DebuggingPage });

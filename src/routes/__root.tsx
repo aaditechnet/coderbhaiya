@@ -15,6 +15,8 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { LanguageProvider } from "@/context/language-context";
 import { SiteHeader } from "@/components/coder-bhaiya/site-header";
 import { SiteFooter } from "@/components/coder-bhaiya/site-footer";
+import { MentorProvider } from "@/context/mentor-context";
+import { FloatingMentor, WelcomeGuide } from "@/components/coder-bhaiya/mentor-guide";
 
 function NotFoundComponent() {
   return (
@@ -121,10 +123,14 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
+        <MentorProvider>
         <a href="#main-content" className="skip-link">Skip to content</a>
         <SiteHeader />
+        <WelcomeGuide />
         <div id="main-content"><Outlet /></div>
         <SiteFooter />
+        <FloatingMentor />
+        </MentorProvider>
       </LanguageProvider>
     </QueryClientProvider>
   );
