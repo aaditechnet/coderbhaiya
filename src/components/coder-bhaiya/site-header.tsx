@@ -8,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { supportedLanguages, type LanguageCode } from "@/config/i18n";
 import { useLanguage } from "@/context/language-context";
-import { useMentorGuide } from "@/context/mentor-context";
+import { useMentorGuide } from "@/context/use-mentor-guide";
 
 const nav = [
   { key: "home", to: "/" },

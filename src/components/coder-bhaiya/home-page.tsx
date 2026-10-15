@@ -4,7 +4,7 @@ import { ArrowRight, CheckCircle2, ChevronRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CodeVisual } from "./code-visual";
 import { Mentor, useMentorCopy } from "./mentor";
-import { useMentorGuide } from "@/context/mentor-context";
+import { useMentorGuide } from "@/context/use-mentor-guide";
 import { ComingSoon } from "./coming-soon";
 import { featureAreas, learningAreas, learningSteps } from "@/config/site";
 import { useLanguage } from "@/context/language-context";
