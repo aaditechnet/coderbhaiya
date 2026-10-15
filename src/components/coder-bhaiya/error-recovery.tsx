@@ -46,13 +46,13 @@ export function ErrorRecoveryScreen({ error, onRetry, language }: { error: unkno
 }
 
 class Boundary extends Component<{ children: ReactNode; language: string }, { error: unknown | null }> {
-  state = { error: null as unknown | null };
+  override state = { error: null as unknown | null };
   static getDerivedStateFromError(error: unknown) { return { error }; }
-  componentDidCatch(error: unknown, info: ErrorInfo) {
+  override componentDidCatch(error: unknown, info: ErrorInfo) {
     console.error(error, info.componentStack);
     reportLovableError(error, { boundary: "coder_bhaiya_page_boundary" });
   }
-  render() {
+  override render() {
     if (this.state.error !== null) {
       return <ErrorRecoveryScreen error={this.state.error} language={this.props.language} onRetry={() => this.setState({ error: null })} />;
     }

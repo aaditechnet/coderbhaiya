@@ -1,4 +1,4 @@
-import type { Language } from "@/config/i18n";
+
 
 export type ErrorCopy = { title: string; body: string; speech: string; retry: string; home: string; learn: string; details: string };
 
@@ -23,6 +23,6 @@ export const errorCopy: Record<string, ErrorCopy> = {
   },
 };
 
-export function getErrorCopy(language?: Language | string): ErrorCopy {
-  return errorCopy[language ?? "en"] ?? errorCopy.en;
+export function getErrorCopy(language?: string): ErrorCopy {
+  return errorCopy[language ?? "en"] ?? (errorCopy["en"] as ErrorCopy);
 }
