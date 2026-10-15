@@ -230,7 +230,7 @@
   .mentor-inline { display: flex; align-items: center; gap: 1.25rem; min-width: 0; }
   .mentor-inline .mentor-image { width: 100px; height: 110px; flex-shrink: 0; object-fit: cover; }
   .mentor-inline .mentor-speech { max-width: none; }
-  .mentor-dock { position: sticky; bottom: 1rem; z-index: 40; display: flex; justify-content: flex-end; padding: 1rem; pointer-events: none; height: 88px; }
+  .mentor-dock { position: sticky; top: 76px; z-index: 40; display: flex; justify-content: flex-end; padding: .5rem 1rem; background: var(--header-backdrop); border-bottom: 1px solid var(--border); height: 72px; }
   .mentor-dock > * { pointer-events: auto; }
   .demo-code { display: block; overflow-x: auto; white-space: pre-wrap; overflow-wrap: anywhere; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--code); color: var(--code-text); padding: 1.5rem; font-family: var(--font-mono); font-size: .875rem; line-height: 1.8; }
   @media (max-width: 640px) { .mentor-scene .mentor-image { max-width: 240px; } .mentor-inline { gap: .75rem; } .mentor-inline .mentor-image { width: 74px; height: 92px; } .mentor-inline .mentor-speech { padding: .5rem .75rem; } }

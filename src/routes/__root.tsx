@@ -126,10 +126,10 @@ function RootComponent() {
         <MentorProvider>
         <a href="#main-content" className="skip-link">Skip to content</a>
         <SiteHeader />
+        <FloatingMentor />
         <WelcomeGuide />
         <div id="main-content"><Outlet /></div>
         <SiteFooter />
-        <FloatingMentor />
         </MentorProvider>
       </LanguageProvider>
     </QueryClientProvider>

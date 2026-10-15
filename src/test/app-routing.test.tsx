@@ -24,6 +24,9 @@ describe("App routing", () => {
     "/visual-learning",
     "/coding-lab",
     "/about",
+    "/debugging",
+    "/quiz",
+    "/dashboard",
   ])("matches the requested destination at %s", (path) => {
     const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
     const matches = router.matchRoutes(path);

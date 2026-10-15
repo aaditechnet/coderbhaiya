@@ -51,7 +51,7 @@ export function SiteHeader() {
             <Button variant="ghost" className={step === 1 ? "ring-2 ring-primary ring-offset-2 ring-offset-background" : ""} onClick={() => setPlaceholder("Sign In")}>{text.signIn}</Button>
             <Button className={step === 1 ? "ring-2 ring-primary ring-offset-2 ring-offset-background" : ""} onClick={() => setPlaceholder("Sign Up")}>{text.signUp}</Button>
           </div>
-          <div className="2xl:hidden">
+          <div className="ml-auto md:ml-0 2xl:hidden">
             <Sheet>
               <SheetTrigger asChild><Button variant="outline" size="icon" aria-label="Open navigation menu"><Menu /></Button></SheetTrigger>
               <SheetContent className="w-[88vw] max-w-sm overflow-y-auto">
