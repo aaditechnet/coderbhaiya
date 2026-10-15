@@ -3,7 +3,7 @@ import { Link, useLocation } from "@tanstack/react-router";
 import { X, ArrowRight, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { useMentorGuide } from "@/context/mentor-context";
+import { useMentorGuide } from "@/context/use-mentor-guide";
 import { Mentor, useMentorCopy } from "./mentor";
 import { mentorPoses } from "@/config/mentor";
 

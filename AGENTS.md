@@ -14,3 +14,4 @@
 - Keep original character poses in one asset-pointer registry and mentor speech in shared translations so image selection and language expansion never require page restructuring.
 - Keep lessons, quizzes and coding examples explicitly frontend-only; only exact supplied lab examples produce preview output, never evaluate arbitrary code or imply progress is saved.
 - Keep the optional welcome guide in the shared shell and highlight the same placeholder account actions without inventing authentication.
+- Keep the mentor context singleton and consumer hook separate from the provider component so live component refreshes cannot disconnect the shared guide state.

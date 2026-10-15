@@ -8,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { supportedLanguages, type LanguageCode } from "@/config/i18n";
 import { useLanguage } from "@/context/language-context";
-import { useMentorGuide } from "@/context/mentor-context";
+import { useMentorGuide } from "@/context/use-mentor-guide";
 
 const nav = [
   { key: "home", to: "/" },
@@ -51,7 +51,7 @@ export function SiteHeader() {
             <Button variant="ghost" className={step === 1 ? "ring-2 ring-primary ring-offset-2 ring-offset-background" : ""} onClick={() => setPlaceholder("Sign In")}>{text.signIn}</Button>
             <Button className={step === 1 ? "ring-2 ring-primary ring-offset-2 ring-offset-background" : ""} onClick={() => setPlaceholder("Sign Up")}>{text.signUp}</Button>
           </div>
-          <div className="2xl:hidden">
+          <div className="ml-auto md:ml-0 2xl:hidden">
             <Sheet>
               <SheetTrigger asChild><Button variant="outline" size="icon" aria-label="Open navigation menu"><Menu /></Button></SheetTrigger>
               <SheetContent className="w-[88vw] max-w-sm overflow-y-auto">
