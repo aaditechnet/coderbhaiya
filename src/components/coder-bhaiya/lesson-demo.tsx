@@ -8,7 +8,7 @@ import { Mentor, useMentorCopy } from "./mentor";
 
 export function LessonDemo({ area }: { area: LearningArea }) {
   const [topic, setTopic] = useState(0);
-  const examples = lessonExamples[area.slug] ?? lessonExamples.python;
+  const examples = lessonExamples[area.slug] ?? lessonExamples["python"];
   const example = examples?.[topic];
   const copy = useMentorCopy();
   if (!example || !examples) return null;
