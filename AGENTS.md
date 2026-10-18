@@ -15,3 +15,4 @@
 - Keep lessons, quizzes and coding examples explicitly frontend-only; only exact supplied lab examples produce preview output, never evaluate arbitrary code or imply progress is saved.
 - Keep the optional welcome guide in the shared shell and highlight the same placeholder account actions without inventing authentication.
 - Keep the mentor context singleton and consumer hook separate from the provider component so live component refreshes cannot disconnect the shared guide state.
+- Prepare Android through dependency-free web metadata and safe-area CSS; package the hosted SSR site in a separate native shell rather than changing the web bootstrap or publishing configuration.

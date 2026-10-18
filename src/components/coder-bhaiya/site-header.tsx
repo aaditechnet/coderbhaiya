@@ -40,9 +40,9 @@ export function SiteHeader() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-border bg-header-backdrop backdrop-blur-xl">
-        <div className="mx-auto flex h-[76px] max-w-[1480px] items-center gap-6 px-4 sm:px-6 lg:px-8">
-          <Link to="/" aria-label="Coder Bhaiya home" className="shrink-0 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><BrandMark /></Link>
+      <header className="site-header sticky top-0 z-50 border-b border-border bg-header-backdrop backdrop-blur-xl">
+        <div className="mx-auto grid h-[76px] max-w-[1480px] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 sm:flex sm:gap-6 sm:px-6 lg:px-8">
+          <Link to="/" aria-label="Coder Bhaiya home" className="min-w-0 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:shrink-0"><BrandMark /></Link>
           <nav className="hidden min-w-0 flex-1 items-center justify-center gap-1 2xl:flex" aria-label="Main navigation">
             {nav.map((item) => <Link key={item.key} to={item.to} activeOptions={{ exact: item.to === "/" }} className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" activeProps={{ className: "bg-accent text-foreground" }}>{text[item.key]}</Link>)}
           </nav>
@@ -54,7 +54,7 @@ export function SiteHeader() {
           <div className="ml-auto md:ml-0 2xl:hidden">
             <Sheet>
               <SheetTrigger asChild><Button variant="outline" size="icon" aria-label="Open navigation menu"><Menu /></Button></SheetTrigger>
-              <SheetContent className="w-[88vw] max-w-sm overflow-y-auto">
+              <SheetContent className="mobile-navigation w-[88vw] max-w-sm overflow-y-auto">
                 <SheetHeader className="text-left"><SheetTitle><BrandMark /></SheetTitle><SheetDescription>Your next coding step is always easy to find.</SheetDescription></SheetHeader>
                 <nav className="mt-7 flex flex-col gap-1" aria-label="Mobile navigation">
                   {nav.map((item) => <SheetClose asChild key={item.key}><Link to={item.to} className="rounded-md px-3 py-3 text-base font-medium text-muted-foreground hover:bg-accent hover:text-foreground">{text[item.key]}</Link></SheetClose>)}
