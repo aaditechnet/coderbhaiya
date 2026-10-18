@@ -4,3 +4,9 @@
 - [x] Extend existing learning pages with honest frontend examples and demos.
 - [x] Add debugging, quiz and neutral student dashboard destinations.
 - [x] Verify original assets, interactions, routing, and mobile layout.
+
+# Android preparation
+- [ ] Review phone layouts and existing project structure.
+- [ ] Apply minimal WebView viewport, safe-area, and touch layout improvements.
+- [ ] Prepare app identity, theme metadata, and Android packaging instructions.
+- [ ] Verify phone navigation, demos, original images, and orientation changes.
