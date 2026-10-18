@@ -10,3 +10,8 @@
 - [ ] Apply minimal WebView viewport, safe-area, and touch layout improvements.
 - [ ] Prepare app identity, theme metadata, and Android packaging instructions.
 - [ ] Verify phone navigation, demos, original images, and orientation changes.
+
+# Payments
+- [ ] Check payment eligibility and obtain approval for test payments.
+- [ ] Collect products and prices, then add pricing and test checkout.
+- [ ] Verify preview checkout before any live activation.
