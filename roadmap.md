@@ -15,3 +15,11 @@
 - [ ] Enable Paddle test payments (user approved; blocked by workspace paid-plan requirement).
 - [ ] Collect products and prices, then add pricing and test checkout (product details not supplied; payment setup blocked).
 - [ ] Verify preview checkout before any live activation (waiting for payment setup and products).
+
+# World-Class CS Curriculum
+- [ ] Add the original thirteen-level curriculum, topic learning experiences, and roadmap navigation within the existing design.
+- [ ] Add all eighteen DSA topic experiences, including visuals, code, complexity, practice, and debugging.
+- [ ] Add twelve career paths with recommended topics, practice, and progressive project briefs.
+- [ ] Add genuine learner progress and a CS skill tree (requires Cloud).
+- [ ] Integrate the supportive AI mentor (conversation shape and storage awaiting user choice; requires Cloud and AI availability).
+- [ ] Verify curriculum coverage, key learning flows, original images, and phone layouts.
