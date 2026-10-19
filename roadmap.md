@@ -12,6 +12,6 @@
 - [x] Verify phone navigation, demos, original images, and orientation changes (browser checks; native testing needs an Android shell).
 
 # Payments
-- [ ] Obtain approval for Paddle test payments (eligibility checked; waiting for user confirmation).
-- [ ] Collect products and prices, then add pricing and test checkout (waiting for product details and approved setup).
-- [ ] Verify preview checkout before any live activation (waiting for approved payment setup and products).
+- [ ] Enable Paddle test payments (user approved; blocked by workspace paid-plan requirement).
+- [ ] Collect products and prices, then add pricing and test checkout (product details not supplied; payment setup blocked).
+- [ ] Verify preview checkout before any live activation (waiting for payment setup and products).
