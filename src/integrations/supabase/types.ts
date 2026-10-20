@@ -14,7 +14,128 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      learning_progress: {
+        Row: {
+          completed_at: string
+          item_id: string
+          kind: string
+          user_id: string
+        }
+        Insert: {
+          completed_at?: string
+          item_id: string
+          kind: string
+          user_id: string
+        }
+        Update: {
+          completed_at?: string
+          item_id?: string
+          kind?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      mentor_gateway_state: {
+        Row: {
+          id: boolean
+          paused: boolean
+          reason: string | null
+          status: number | null
+          updated_at: string
+        }
+        Insert: {
+          id?: boolean
+          paused?: boolean
+          reason?: string | null
+          status?: number | null
+          updated_at?: string
+        }
+        Update: {
+          id?: boolean
+          paused?: boolean
+          reason?: string | null
+          status?: number | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      mentor_messages: {
+        Row: {
+          created_at: string
+          id: string
+          message: Json
+          sdk_id: string
+          thread_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          message: Json
+          sdk_id: string
+          thread_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          message?: Json
+          sdk_id?: string
+          thread_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "mentor_messages_thread_id_fkey"
+            columns: ["thread_id"]
+            isOneToOne: false
+            referencedRelation: "mentor_threads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      mentor_threads: {
+        Row: {
+          created_at: string
+          id: string
+          title: string
+          topic_id: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          title?: string
+          topic_id?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          title?: string
+          topic_id?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_pose: string
+          display_name: string
+          id: string
+        }
+        Insert: {
+          avatar_pose?: string
+          display_name?: string
+          id: string
+        }
+        Update: {
+          avatar_pose?: string
+          display_name?: string
+          id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
