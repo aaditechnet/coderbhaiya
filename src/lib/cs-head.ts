@@ -1,0 +1,1 @@
+export const csHead = (title: string, description: string) => ({ meta: [{ title: `${title} — Coder Bhaiya` }, { name: "description", content: description }, { property: "og:title", content: `${title} — Coder Bhaiya` }, { property: "og:description", content: description }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] });
