@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CodingLabRouteImport } from './routes/coding-lab'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as DebuggingRouteImport } from './routes/debugging'
@@ -18,6 +19,7 @@ import { Route as DsaRouteImport } from './routes/dsa'
 import { Route as LearnRouteImport } from './routes/learn'
 import { Route as ProgrammingLanguagesRouteImport } from './routes/programming-languages'
 import { Route as QuizRouteImport } from './routes/quiz'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as VisualLearningRouteImport } from './routes/visual-learning'
 import { Route as LearnIndexRouteImport } from './routes/learn.index'
 import { Route as LearnSlugRouteImport } from './routes/learn.$slug'
@@ -30,6 +32,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CodingLabRoute = CodingLabRouteImport.update({
@@ -67,6 +74,11 @@ const QuizRoute = QuizRouteImport.update({
   path: '/quiz',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const VisualLearningRoute = VisualLearningRouteImport.update({
   id: '/visual-learning',
   path: '/visual-learning',
@@ -86,6 +98,7 @@ const LearnSlugRoute = LearnSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
   '/coding-lab': typeof CodingLabRoute
   '/dashboard': typeof DashboardRoute
   '/debugging': typeof DebuggingRoute
@@ -93,6 +106,7 @@ export interface FileRoutesByFullPath {
   '/learn': typeof LearnRouteWithChildren
   '/programming-languages': typeof ProgrammingLanguagesRoute
   '/quiz': typeof QuizRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/visual-learning': typeof VisualLearningRoute
   '/learn/$slug': typeof LearnSlugRoute
   '/learn/': typeof LearnIndexRoute
@@ -100,12 +114,14 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
   '/coding-lab': typeof CodingLabRoute
   '/dashboard': typeof DashboardRoute
   '/debugging': typeof DebuggingRoute
   '/dsa': typeof DsaRoute
   '/programming-languages': typeof ProgrammingLanguagesRoute
   '/quiz': typeof QuizRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/visual-learning': typeof VisualLearningRoute
   '/learn/$slug': typeof LearnSlugRoute
   '/learn': typeof LearnIndexRoute
@@ -114,6 +130,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
   '/coding-lab': typeof CodingLabRoute
   '/dashboard': typeof DashboardRoute
   '/debugging': typeof DebuggingRoute
@@ -121,6 +138,7 @@ export interface FileRoutesById {
   '/learn': typeof LearnRouteWithChildren
   '/programming-languages': typeof ProgrammingLanguagesRoute
   '/quiz': typeof QuizRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/visual-learning': typeof VisualLearningRoute
   '/learn/$slug': typeof LearnSlugRoute
   '/learn/': typeof LearnIndexRoute
@@ -130,6 +148,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/auth'
     | '/coding-lab'
     | '/dashboard'
     | '/debugging'
@@ -137,6 +156,7 @@ export interface FileRouteTypes {
     | '/learn'
     | '/programming-languages'
     | '/quiz'
+    | '/reset-password'
     | '/visual-learning'
     | '/learn/$slug'
     | '/learn/'
@@ -144,12 +164,14 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/auth'
     | '/coding-lab'
     | '/dashboard'
     | '/debugging'
     | '/dsa'
     | '/programming-languages'
     | '/quiz'
+    | '/reset-password'
     | '/visual-learning'
     | '/learn/$slug'
     | '/learn'
@@ -157,6 +179,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/auth'
     | '/coding-lab'
     | '/dashboard'
     | '/debugging'
@@ -164,6 +187,7 @@ export interface FileRouteTypes {
     | '/learn'
     | '/programming-languages'
     | '/quiz'
+    | '/reset-password'
     | '/visual-learning'
     | '/learn/$slug'
     | '/learn/'
@@ -172,6 +196,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AuthRoute: typeof AuthRoute
   CodingLabRoute: typeof CodingLabRoute
   DashboardRoute: typeof DashboardRoute
   DebuggingRoute: typeof DebuggingRoute
@@ -179,6 +204,7 @@ export interface RootRouteChildren {
   LearnRoute: typeof LearnRouteWithChildren
   ProgrammingLanguagesRoute: typeof ProgrammingLanguagesRoute
   QuizRoute: typeof QuizRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
   VisualLearningRoute: typeof VisualLearningRoute
 }
 
@@ -196,6 +222,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/coding-lab': {
@@ -247,6 +280,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof QuizRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/visual-learning': {
       id: '/visual-learning'
       path: '/visual-learning'
@@ -286,6 +326,7 @@ const LearnRouteWithChildren = LearnRoute._addFileChildren(LearnRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AuthRoute: AuthRoute,
   CodingLabRoute: CodingLabRoute,
   DashboardRoute: DashboardRoute,
   DebuggingRoute: DebuggingRoute,
@@ -293,6 +334,7 @@ const rootRouteChildren: RootRouteChildren = {
   LearnRoute: LearnRouteWithChildren,
   ProgrammingLanguagesRoute: ProgrammingLanguagesRoute,
   QuizRoute: QuizRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
   VisualLearningRoute: VisualLearningRoute,
 }
 export const routeTree = rootRouteImport
