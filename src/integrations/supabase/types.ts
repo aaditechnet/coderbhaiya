@@ -136,6 +136,21 @@ export type Database = {
         }
         Relationships: []
       }
+      test_connection: {
+        Row: {
+          id: number
+          message: string | null
+        }
+        Insert: {
+          id?: number
+          message?: string | null
+        }
+        Update: {
+          id?: number
+          message?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
