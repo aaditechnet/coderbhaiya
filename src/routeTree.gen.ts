@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CodingLabRouteImport } from './routes/coding-lab'
+import { Route as CsRoadmapRouteImport } from './routes/cs-roadmap'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as DebuggingRouteImport } from './routes/debugging'
 import { Route as DsaRouteImport } from './routes/dsa'
@@ -42,6 +43,11 @@ const AuthRoute = AuthRouteImport.update({
 const CodingLabRoute = CodingLabRouteImport.update({
   id: '/coding-lab',
   path: '/coding-lab',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CsRoadmapRoute = CsRoadmapRouteImport.update({
+  id: '/cs-roadmap',
+  path: '/cs-roadmap',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardRoute = DashboardRouteImport.update({
@@ -100,6 +106,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/coding-lab': typeof CodingLabRoute
+  '/cs-roadmap': typeof CsRoadmapRoute
   '/dashboard': typeof DashboardRoute
   '/debugging': typeof DebuggingRoute
   '/dsa': typeof DsaRoute
@@ -116,6 +123,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/coding-lab': typeof CodingLabRoute
+  '/cs-roadmap': typeof CsRoadmapRoute
   '/dashboard': typeof DashboardRoute
   '/debugging': typeof DebuggingRoute
   '/dsa': typeof DsaRoute
@@ -132,6 +140,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/coding-lab': typeof CodingLabRoute
+  '/cs-roadmap': typeof CsRoadmapRoute
   '/dashboard': typeof DashboardRoute
   '/debugging': typeof DebuggingRoute
   '/dsa': typeof DsaRoute
@@ -150,6 +159,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/coding-lab'
+    | '/cs-roadmap'
     | '/dashboard'
     | '/debugging'
     | '/dsa'
@@ -166,6 +176,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/coding-lab'
+    | '/cs-roadmap'
     | '/dashboard'
     | '/debugging'
     | '/dsa'
@@ -181,6 +192,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/coding-lab'
+    | '/cs-roadmap'
     | '/dashboard'
     | '/debugging'
     | '/dsa'
@@ -198,6 +210,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AuthRoute: typeof AuthRoute
   CodingLabRoute: typeof CodingLabRoute
+  CsRoadmapRoute: typeof CsRoadmapRoute
   DashboardRoute: typeof DashboardRoute
   DebuggingRoute: typeof DebuggingRoute
   DsaRoute: typeof DsaRoute
@@ -236,6 +249,13 @@ declare module '@tanstack/react-router' {
       path: '/coding-lab'
       fullPath: '/coding-lab'
       preLoaderRoute: typeof CodingLabRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cs-roadmap': {
+      id: '/cs-roadmap'
+      path: '/cs-roadmap'
+      fullPath: '/cs-roadmap'
+      preLoaderRoute: typeof CsRoadmapRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard': {
@@ -328,6 +348,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AuthRoute: AuthRoute,
   CodingLabRoute: CodingLabRoute,
+  CsRoadmapRoute: CsRoadmapRoute,
   DashboardRoute: DashboardRoute,
   DebuggingRoute: DebuggingRoute,
   DsaRoute: DsaRoute,
