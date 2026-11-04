@@ -17,6 +17,7 @@ import { SiteHeader } from "@/components/coder-bhaiya/site-header";
 import { SiteFooter } from "@/components/coder-bhaiya/site-footer";
 import { MentorProvider } from "@/context/mentor-context";
 import { FloatingMentor, WelcomeGuide } from "@/components/coder-bhaiya/mentor-guide";
+import { StudentProvider } from "@/context/student-provider";
 
 function NotFoundComponent() {
   return (
@@ -128,6 +129,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <StudentProvider>
       <LanguageProvider>
         <MentorProvider>
         <a href="#main-content" className="skip-link">Skip to content</a>
@@ -138,6 +140,7 @@ function RootComponent() {
         <SiteFooter />
         </MentorProvider>
       </LanguageProvider>
+      </StudentProvider>
     </QueryClientProvider>
   );
 }

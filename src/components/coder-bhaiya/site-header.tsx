@@ -9,6 +9,8 @@ import { Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTi
 import { supportedLanguages, type LanguageCode } from "@/config/i18n";
 import { useLanguage } from "@/context/language-context";
 import { useMentorGuide } from "@/context/use-mentor-guide";
+import { curriculumCopy } from "@/config/cs-curriculum";
+import { useStudent } from "@/context/student-state";
 
 const nav = [
   { key: "home", to: "/" },
@@ -24,6 +26,7 @@ const nav = [
 export function SiteHeader() {
   const { language, setLanguage, text } = useLanguage();
   const { step } = useMentorGuide();
+  const { user } = useStudent();
   const [placeholder, setPlaceholder] = useState("");
 
   const LanguageSelect = ({ mobile = false }: { mobile?: boolean }) => (
@@ -44,10 +47,12 @@ export function SiteHeader() {
         <div className="mx-auto grid h-[76px] max-w-[1480px] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 sm:flex sm:gap-6 sm:px-6 lg:px-8">
           <Link to="/" aria-label="Coder Bhaiya home" className="min-w-0 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:shrink-0"><BrandMark /></Link>
           <nav className="hidden min-w-0 flex-1 items-center justify-center gap-1 2xl:flex" aria-label="Main navigation">
+            <Link to="/cs-roadmap" className="rounded-md px-2 py-2 text-xs font-bold text-primary">{curriculumCopy[language].roadmap}</Link>
             {nav.map((item) => <Link key={item.key} to={item.to} activeOptions={{ exact: item.to === "/" }} className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" activeProps={{ className: "bg-accent text-foreground" }}>{text[item.key]}</Link>)}
           </nav>
           <div className="ml-auto hidden shrink-0 items-center gap-2 md:flex">
             <LanguageSelect />
+            <Button asChild variant="outline"><Link to="/auth">{user ? "Student account" : "Student sign in"}</Link></Button>
             <Button variant="ghost" className={step === 1 ? "ring-2 ring-primary ring-offset-2 ring-offset-background" : ""} onClick={() => setPlaceholder("Sign In")}>{text.signIn}</Button>
             <Button className={step === 1 ? "ring-2 ring-primary ring-offset-2 ring-offset-background" : ""} onClick={() => setPlaceholder("Sign Up")}>{text.signUp}</Button>
           </div>
@@ -57,6 +62,8 @@ export function SiteHeader() {
               <SheetContent className="mobile-navigation w-[88vw] max-w-sm overflow-y-auto">
                 <SheetHeader className="text-left"><SheetTitle><BrandMark /></SheetTitle><SheetDescription>Your next coding step is always easy to find.</SheetDescription></SheetHeader>
                 <nav className="mt-7 flex flex-col gap-1" aria-label="Mobile navigation">
+                  <SheetClose asChild><Link to="/cs-roadmap" className="rounded-md bg-primary-soft px-3 py-3 text-sm font-bold text-primary">{curriculumCopy[language].roadmap}</Link></SheetClose>
+                  <SheetClose asChild><Link to="/auth" className="rounded-md px-3 py-3 text-sm font-semibold">{user ? "Student account" : "Student sign in"}</Link></SheetClose>
                   {nav.map((item) => <SheetClose asChild key={item.key}><Link to={item.to} className="rounded-md px-3 py-3 text-base font-medium text-muted-foreground hover:bg-accent hover:text-foreground">{text[item.key]}</Link></SheetClose>)}
                 </nav>
                 <div className="mt-6 border-t border-border pt-6"><LanguageSelect mobile /></div>

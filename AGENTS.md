@@ -16,3 +16,6 @@
 - Keep the optional welcome guide in the shared shell and highlight the same placeholder account actions without inventing authentication.
 - Keep the mentor context singleton and consumer hook separate from the provider component so live component refreshes cannot disconnect the shared guide state.
 - Prepare Android through dependency-free web metadata and safe-area CSS; package the hosted SSR site in a separate native shell rather than changing the web bootstrap or publishing configuration.
+- Keep the CS curriculum and projects in shared catalogs with stable topic IDs and separate dynamic topic/conversation routes, preserving legacy demo URLs and placeholder account buttons.
+- Persist CS progress and private mentor history under owner-scoped Cloud policies; student authentication is a separate explicit account entry so legacy demos retain their frontend-only behavior.
+- Use the generated Lovable AI Gateway SDK contract on server boundaries and AI Elements for conversation rendering; keep arbitrary code execution unsupported.

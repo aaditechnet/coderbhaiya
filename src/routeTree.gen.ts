@@ -25,6 +25,7 @@ import { Route as ProgrammingLanguagesRouteImport } from './routes/programming-l
 import { Route as QuizRouteImport } from './routes/quiz'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as VisualLearningRouteImport } from './routes/visual-learning'
+import { Route as ApiCsMentorRouteImport } from './routes/api.cs-mentor'
 import { Route as CsTopicTopicIdRouteImport } from './routes/cs-topic.$topicId'
 import { Route as LearnIndexRouteImport } from './routes/learn.index'
 import { Route as LearnSlugRouteImport } from './routes/learn.$slug'
@@ -109,6 +110,11 @@ const VisualLearningRoute = VisualLearningRouteImport.update({
   path: '/visual-learning',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiCsMentorRoute = ApiCsMentorRouteImport.update({
+  id: '/api/cs-mentor',
+  path: '/api/cs-mentor',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CsTopicTopicIdRoute = CsTopicTopicIdRouteImport.update({
   id: '/cs-topic/$topicId',
   path: '/cs-topic/$topicId',
@@ -142,6 +148,7 @@ export interface FileRoutesByFullPath {
   '/quiz': typeof QuizRoute
   '/reset-password': typeof ResetPasswordRoute
   '/visual-learning': typeof VisualLearningRoute
+  '/api/cs-mentor': typeof ApiCsMentorRoute
   '/cs-topic/$topicId': typeof CsTopicTopicIdRoute
   '/learn/$slug': typeof LearnSlugRoute
   '/learn/': typeof LearnIndexRoute
@@ -162,6 +169,7 @@ export interface FileRoutesByTo {
   '/quiz': typeof QuizRoute
   '/reset-password': typeof ResetPasswordRoute
   '/visual-learning': typeof VisualLearningRoute
+  '/api/cs-mentor': typeof ApiCsMentorRoute
   '/cs-topic/$topicId': typeof CsTopicTopicIdRoute
   '/learn/$slug': typeof LearnSlugRoute
   '/learn': typeof LearnIndexRoute
@@ -184,6 +192,7 @@ export interface FileRoutesById {
   '/quiz': typeof QuizRoute
   '/reset-password': typeof ResetPasswordRoute
   '/visual-learning': typeof VisualLearningRoute
+  '/api/cs-mentor': typeof ApiCsMentorRoute
   '/cs-topic/$topicId': typeof CsTopicTopicIdRoute
   '/learn/$slug': typeof LearnSlugRoute
   '/learn/': typeof LearnIndexRoute
@@ -207,6 +216,7 @@ export interface FileRouteTypes {
     | '/quiz'
     | '/reset-password'
     | '/visual-learning'
+    | '/api/cs-mentor'
     | '/cs-topic/$topicId'
     | '/learn/$slug'
     | '/learn/'
@@ -227,6 +237,7 @@ export interface FileRouteTypes {
     | '/quiz'
     | '/reset-password'
     | '/visual-learning'
+    | '/api/cs-mentor'
     | '/cs-topic/$topicId'
     | '/learn/$slug'
     | '/learn'
@@ -248,6 +259,7 @@ export interface FileRouteTypes {
     | '/quiz'
     | '/reset-password'
     | '/visual-learning'
+    | '/api/cs-mentor'
     | '/cs-topic/$topicId'
     | '/learn/$slug'
     | '/learn/'
@@ -270,6 +282,7 @@ export interface RootRouteChildren {
   QuizRoute: typeof QuizRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
   VisualLearningRoute: typeof VisualLearningRoute
+  ApiCsMentorRoute: typeof ApiCsMentorRoute
   CsTopicTopicIdRoute: typeof CsTopicTopicIdRoute
 }
 
@@ -387,6 +400,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VisualLearningRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/cs-mentor': {
+      id: '/api/cs-mentor'
+      path: '/api/cs-mentor'
+      fullPath: '/api/cs-mentor'
+      preLoaderRoute: typeof ApiCsMentorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cs-topic/$topicId': {
       id: '/cs-topic/$topicId'
       path: '/cs-topic/$topicId'
@@ -440,6 +460,7 @@ const rootRouteChildren: RootRouteChildren = {
   QuizRoute: QuizRoute,
   ResetPasswordRoute: ResetPasswordRoute,
   VisualLearningRoute: VisualLearningRoute,
+  ApiCsMentorRoute: ApiCsMentorRoute,
   CsTopicTopicIdRoute: CsTopicTopicIdRoute,
 }
 export const routeTree = rootRouteImport
