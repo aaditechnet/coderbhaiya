@@ -13,6 +13,10 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CodingLabRouteImport } from './routes/coding-lab'
+import { Route as CsCareersRouteImport } from './routes/cs-careers'
+import { Route as CsMentorRouteImport } from './routes/cs-mentor'
+import { Route as CsProgressRouteImport } from './routes/cs-progress'
+import { Route as CsProjectsRouteImport } from './routes/cs-projects'
 import { Route as CsRoadmapRouteImport } from './routes/cs-roadmap'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as DebuggingRouteImport } from './routes/debugging'
@@ -22,6 +26,8 @@ import { Route as ProgrammingLanguagesRouteImport } from './routes/programming-l
 import { Route as QuizRouteImport } from './routes/quiz'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as VisualLearningRouteImport } from './routes/visual-learning'
+import { Route as ApiCsMentorRouteImport } from './routes/api.cs-mentor'
+import { Route as CsMentorThreadThreadIdRouteImport } from './routes/cs-mentor-thread.$threadId'
 import { Route as CsTopicTopicIdRouteImport } from './routes/cs-topic.$topicId'
 import { Route as LearnIndexRouteImport } from './routes/learn.index'
 import { Route as LearnSlugRouteImport } from './routes/learn.$slug'
@@ -44,6 +50,26 @@ const AuthRoute = AuthRouteImport.update({
 const CodingLabRoute = CodingLabRouteImport.update({
   id: '/coding-lab',
   path: '/coding-lab',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CsCareersRoute = CsCareersRouteImport.update({
+  id: '/cs-careers',
+  path: '/cs-careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CsMentorRoute = CsMentorRouteImport.update({
+  id: '/cs-mentor',
+  path: '/cs-mentor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CsProgressRoute = CsProgressRouteImport.update({
+  id: '/cs-progress',
+  path: '/cs-progress',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CsProjectsRoute = CsProjectsRouteImport.update({
+  id: '/cs-projects',
+  path: '/cs-projects',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CsRoadmapRoute = CsRoadmapRouteImport.update({
@@ -91,6 +117,16 @@ const VisualLearningRoute = VisualLearningRouteImport.update({
   path: '/visual-learning',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiCsMentorRoute = ApiCsMentorRouteImport.update({
+  id: '/api/cs-mentor',
+  path: '/api/cs-mentor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CsMentorThreadThreadIdRoute = CsMentorThreadThreadIdRouteImport.update({
+  id: '/cs-mentor-thread/$threadId',
+  path: '/cs-mentor-thread/$threadId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CsTopicTopicIdRoute = CsTopicTopicIdRouteImport.update({
   id: '/cs-topic/$topicId',
   path: '/cs-topic/$topicId',
@@ -112,6 +148,10 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/coding-lab': typeof CodingLabRoute
+  '/cs-careers': typeof CsCareersRoute
+  '/cs-mentor': typeof CsMentorRoute
+  '/cs-progress': typeof CsProgressRoute
+  '/cs-projects': typeof CsProjectsRoute
   '/cs-roadmap': typeof CsRoadmapRoute
   '/dashboard': typeof DashboardRoute
   '/debugging': typeof DebuggingRoute
@@ -121,6 +161,8 @@ export interface FileRoutesByFullPath {
   '/quiz': typeof QuizRoute
   '/reset-password': typeof ResetPasswordRoute
   '/visual-learning': typeof VisualLearningRoute
+  '/api/cs-mentor': typeof ApiCsMentorRoute
+  '/cs-mentor-thread/$threadId': typeof CsMentorThreadThreadIdRoute
   '/cs-topic/$topicId': typeof CsTopicTopicIdRoute
   '/learn/$slug': typeof LearnSlugRoute
   '/learn/': typeof LearnIndexRoute
@@ -130,6 +172,10 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/coding-lab': typeof CodingLabRoute
+  '/cs-careers': typeof CsCareersRoute
+  '/cs-mentor': typeof CsMentorRoute
+  '/cs-progress': typeof CsProgressRoute
+  '/cs-projects': typeof CsProjectsRoute
   '/cs-roadmap': typeof CsRoadmapRoute
   '/dashboard': typeof DashboardRoute
   '/debugging': typeof DebuggingRoute
@@ -138,6 +184,8 @@ export interface FileRoutesByTo {
   '/quiz': typeof QuizRoute
   '/reset-password': typeof ResetPasswordRoute
   '/visual-learning': typeof VisualLearningRoute
+  '/api/cs-mentor': typeof ApiCsMentorRoute
+  '/cs-mentor-thread/$threadId': typeof CsMentorThreadThreadIdRoute
   '/cs-topic/$topicId': typeof CsTopicTopicIdRoute
   '/learn/$slug': typeof LearnSlugRoute
   '/learn': typeof LearnIndexRoute
@@ -148,6 +196,10 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/coding-lab': typeof CodingLabRoute
+  '/cs-careers': typeof CsCareersRoute
+  '/cs-mentor': typeof CsMentorRoute
+  '/cs-progress': typeof CsProgressRoute
+  '/cs-projects': typeof CsProjectsRoute
   '/cs-roadmap': typeof CsRoadmapRoute
   '/dashboard': typeof DashboardRoute
   '/debugging': typeof DebuggingRoute
@@ -157,6 +209,8 @@ export interface FileRoutesById {
   '/quiz': typeof QuizRoute
   '/reset-password': typeof ResetPasswordRoute
   '/visual-learning': typeof VisualLearningRoute
+  '/api/cs-mentor': typeof ApiCsMentorRoute
+  '/cs-mentor-thread/$threadId': typeof CsMentorThreadThreadIdRoute
   '/cs-topic/$topicId': typeof CsTopicTopicIdRoute
   '/learn/$slug': typeof LearnSlugRoute
   '/learn/': typeof LearnIndexRoute
@@ -168,6 +222,10 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/coding-lab'
+    | '/cs-careers'
+    | '/cs-mentor'
+    | '/cs-progress'
+    | '/cs-projects'
     | '/cs-roadmap'
     | '/dashboard'
     | '/debugging'
@@ -177,6 +235,8 @@ export interface FileRouteTypes {
     | '/quiz'
     | '/reset-password'
     | '/visual-learning'
+    | '/api/cs-mentor'
+    | '/cs-mentor-thread/$threadId'
     | '/cs-topic/$topicId'
     | '/learn/$slug'
     | '/learn/'
@@ -186,6 +246,10 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/coding-lab'
+    | '/cs-careers'
+    | '/cs-mentor'
+    | '/cs-progress'
+    | '/cs-projects'
     | '/cs-roadmap'
     | '/dashboard'
     | '/debugging'
@@ -194,6 +258,8 @@ export interface FileRouteTypes {
     | '/quiz'
     | '/reset-password'
     | '/visual-learning'
+    | '/api/cs-mentor'
+    | '/cs-mentor-thread/$threadId'
     | '/cs-topic/$topicId'
     | '/learn/$slug'
     | '/learn'
@@ -203,6 +269,10 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/coding-lab'
+    | '/cs-careers'
+    | '/cs-mentor'
+    | '/cs-progress'
+    | '/cs-projects'
     | '/cs-roadmap'
     | '/dashboard'
     | '/debugging'
@@ -212,6 +282,8 @@ export interface FileRouteTypes {
     | '/quiz'
     | '/reset-password'
     | '/visual-learning'
+    | '/api/cs-mentor'
+    | '/cs-mentor-thread/$threadId'
     | '/cs-topic/$topicId'
     | '/learn/$slug'
     | '/learn/'
@@ -222,6 +294,10 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AuthRoute: typeof AuthRoute
   CodingLabRoute: typeof CodingLabRoute
+  CsCareersRoute: typeof CsCareersRoute
+  CsMentorRoute: typeof CsMentorRoute
+  CsProgressRoute: typeof CsProgressRoute
+  CsProjectsRoute: typeof CsProjectsRoute
   CsRoadmapRoute: typeof CsRoadmapRoute
   DashboardRoute: typeof DashboardRoute
   DebuggingRoute: typeof DebuggingRoute
@@ -231,6 +307,8 @@ export interface RootRouteChildren {
   QuizRoute: typeof QuizRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
   VisualLearningRoute: typeof VisualLearningRoute
+  ApiCsMentorRoute: typeof ApiCsMentorRoute
+  CsMentorThreadThreadIdRoute: typeof CsMentorThreadThreadIdRoute
   CsTopicTopicIdRoute: typeof CsTopicTopicIdRoute
 }
 
@@ -262,6 +340,34 @@ declare module '@tanstack/react-router' {
       path: '/coding-lab'
       fullPath: '/coding-lab'
       preLoaderRoute: typeof CodingLabRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cs-careers': {
+      id: '/cs-careers'
+      path: '/cs-careers'
+      fullPath: '/cs-careers'
+      preLoaderRoute: typeof CsCareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cs-mentor': {
+      id: '/cs-mentor'
+      path: '/cs-mentor'
+      fullPath: '/cs-mentor'
+      preLoaderRoute: typeof CsMentorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cs-progress': {
+      id: '/cs-progress'
+      path: '/cs-progress'
+      fullPath: '/cs-progress'
+      preLoaderRoute: typeof CsProgressRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cs-projects': {
+      id: '/cs-projects'
+      path: '/cs-projects'
+      fullPath: '/cs-projects'
+      preLoaderRoute: typeof CsProjectsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cs-roadmap': {
@@ -327,6 +433,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VisualLearningRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/cs-mentor': {
+      id: '/api/cs-mentor'
+      path: '/api/cs-mentor'
+      fullPath: '/api/cs-mentor'
+      preLoaderRoute: typeof ApiCsMentorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cs-mentor-thread/$threadId': {
+      id: '/cs-mentor-thread/$threadId'
+      path: '/cs-mentor-thread/$threadId'
+      fullPath: '/cs-mentor-thread/$threadId'
+      preLoaderRoute: typeof CsMentorThreadThreadIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cs-topic/$topicId': {
       id: '/cs-topic/$topicId'
       path: '/cs-topic/$topicId'
@@ -368,6 +488,10 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AuthRoute: AuthRoute,
   CodingLabRoute: CodingLabRoute,
+  CsCareersRoute: CsCareersRoute,
+  CsMentorRoute: CsMentorRoute,
+  CsProgressRoute: CsProgressRoute,
+  CsProjectsRoute: CsProjectsRoute,
   CsRoadmapRoute: CsRoadmapRoute,
   DashboardRoute: DashboardRoute,
   DebuggingRoute: DebuggingRoute,
@@ -377,6 +501,8 @@ const rootRouteChildren: RootRouteChildren = {
   QuizRoute: QuizRoute,
   ResetPasswordRoute: ResetPasswordRoute,
   VisualLearningRoute: VisualLearningRoute,
+  ApiCsMentorRoute: ApiCsMentorRoute,
+  CsMentorThreadThreadIdRoute: CsMentorThreadThreadIdRoute,
   CsTopicTopicIdRoute: CsTopicTopicIdRoute,
 }
 export const routeTree = rootRouteImport
