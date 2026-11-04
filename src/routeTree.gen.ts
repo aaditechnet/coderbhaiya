@@ -13,6 +13,9 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CodingLabRouteImport } from './routes/coding-lab'
+import { Route as CsCareersRouteImport } from './routes/cs-careers'
+import { Route as CsProgressRouteImport } from './routes/cs-progress'
+import { Route as CsProjectsRouteImport } from './routes/cs-projects'
 import { Route as CsRoadmapRouteImport } from './routes/cs-roadmap'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as DebuggingRouteImport } from './routes/debugging'
@@ -44,6 +47,21 @@ const AuthRoute = AuthRouteImport.update({
 const CodingLabRoute = CodingLabRouteImport.update({
   id: '/coding-lab',
   path: '/coding-lab',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CsCareersRoute = CsCareersRouteImport.update({
+  id: '/cs-careers',
+  path: '/cs-careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CsProgressRoute = CsProgressRouteImport.update({
+  id: '/cs-progress',
+  path: '/cs-progress',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CsProjectsRoute = CsProjectsRouteImport.update({
+  id: '/cs-projects',
+  path: '/cs-projects',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CsRoadmapRoute = CsRoadmapRouteImport.update({
@@ -112,6 +130,9 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/coding-lab': typeof CodingLabRoute
+  '/cs-careers': typeof CsCareersRoute
+  '/cs-progress': typeof CsProgressRoute
+  '/cs-projects': typeof CsProjectsRoute
   '/cs-roadmap': typeof CsRoadmapRoute
   '/dashboard': typeof DashboardRoute
   '/debugging': typeof DebuggingRoute
@@ -130,6 +151,9 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/coding-lab': typeof CodingLabRoute
+  '/cs-careers': typeof CsCareersRoute
+  '/cs-progress': typeof CsProgressRoute
+  '/cs-projects': typeof CsProjectsRoute
   '/cs-roadmap': typeof CsRoadmapRoute
   '/dashboard': typeof DashboardRoute
   '/debugging': typeof DebuggingRoute
@@ -148,6 +172,9 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/coding-lab': typeof CodingLabRoute
+  '/cs-careers': typeof CsCareersRoute
+  '/cs-progress': typeof CsProgressRoute
+  '/cs-projects': typeof CsProjectsRoute
   '/cs-roadmap': typeof CsRoadmapRoute
   '/dashboard': typeof DashboardRoute
   '/debugging': typeof DebuggingRoute
@@ -168,6 +195,9 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/coding-lab'
+    | '/cs-careers'
+    | '/cs-progress'
+    | '/cs-projects'
     | '/cs-roadmap'
     | '/dashboard'
     | '/debugging'
@@ -186,6 +216,9 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/coding-lab'
+    | '/cs-careers'
+    | '/cs-progress'
+    | '/cs-projects'
     | '/cs-roadmap'
     | '/dashboard'
     | '/debugging'
@@ -203,6 +236,9 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/coding-lab'
+    | '/cs-careers'
+    | '/cs-progress'
+    | '/cs-projects'
     | '/cs-roadmap'
     | '/dashboard'
     | '/debugging'
@@ -222,6 +258,9 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AuthRoute: typeof AuthRoute
   CodingLabRoute: typeof CodingLabRoute
+  CsCareersRoute: typeof CsCareersRoute
+  CsProgressRoute: typeof CsProgressRoute
+  CsProjectsRoute: typeof CsProjectsRoute
   CsRoadmapRoute: typeof CsRoadmapRoute
   DashboardRoute: typeof DashboardRoute
   DebuggingRoute: typeof DebuggingRoute
@@ -262,6 +301,27 @@ declare module '@tanstack/react-router' {
       path: '/coding-lab'
       fullPath: '/coding-lab'
       preLoaderRoute: typeof CodingLabRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cs-careers': {
+      id: '/cs-careers'
+      path: '/cs-careers'
+      fullPath: '/cs-careers'
+      preLoaderRoute: typeof CsCareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cs-progress': {
+      id: '/cs-progress'
+      path: '/cs-progress'
+      fullPath: '/cs-progress'
+      preLoaderRoute: typeof CsProgressRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cs-projects': {
+      id: '/cs-projects'
+      path: '/cs-projects'
+      fullPath: '/cs-projects'
+      preLoaderRoute: typeof CsProjectsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cs-roadmap': {
@@ -368,6 +428,9 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AuthRoute: AuthRoute,
   CodingLabRoute: CodingLabRoute,
+  CsCareersRoute: CsCareersRoute,
+  CsProgressRoute: CsProgressRoute,
+  CsProjectsRoute: CsProjectsRoute,
   CsRoadmapRoute: CsRoadmapRoute,
   DashboardRoute: DashboardRoute,
   DebuggingRoute: DebuggingRoute,
