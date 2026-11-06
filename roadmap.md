@@ -16,6 +16,12 @@
 - [ ] Collect products and prices, then add pricing and test checkout (product details not supplied; payment setup blocked).
 - [ ] Verify preview checkout before any live activation (waiting for payment setup and products).
 
+# Android and iPhone conversion
+- [ ] Create a separate native shell loading the existing published HTTPS website, preserving the web app and branding.
+- [ ] Generate Android and iOS native projects with branded icons and safe defaults.
+- [ ] Verify shell configuration and web phone layouts; document native sign-in, device testing, signing, and store-release requirements.
+- [ ] Generate signed installable Android/iPhone releases (requires Android SDK/JDK and macOS/Xcode plus signing accounts).
+
 # World-Class CS Curriculum
 - [x] Add the original thirteen-level curriculum catalog, topic experience structure, and roadmap navigation within the existing design.
 - [x] Add all eighteen DSA introductory experiences with visuals, supplied examples, complexity, practice, and debugging.
