@@ -17,9 +17,14 @@
 - [ ] Verify preview checkout before any live activation (waiting for payment setup and products).
 
 # World-Class CS Curriculum
-- [ ] Add the original thirteen-level curriculum, topic learning experiences, and roadmap navigation within the existing design.
-- [ ] Add all eighteen DSA topic experiences, including visuals, code, complexity, practice, and debugging.
-- [ ] Add twelve career paths with recommended topics, practice, and progressive project briefs.
-- [ ] Add genuine learner progress and a CS skill tree (requires Cloud).
-- [ ] Integrate the supportive AI mentor (conversation shape and storage awaiting user choice; requires Cloud and AI availability).
-- [ ] Verify curriculum coverage, key learning flows, original images, and phone layouts.
+- [x] Add the original thirteen-level curriculum catalog, topic experience structure, and roadmap navigation within the existing design.
+- [x] Add all eighteen DSA introductory experiences with visuals, supplied examples, complexity, practice, and debugging.
+- [x] Add twelve career paths with recommended topics, practice, and fifteen progressive project briefs.
+- [x] Implement owner-scoped saved progress and a CS skill tree; authenticated persistence verification is tracked separately.
+- [x] Implement separate private mentor conversations and connect the existing guide to the curriculum mentor; authenticated streaming verification is tracked separately.
+- [x] Verify public curriculum coverage, example preview, debug reveal, original images, mobile navigation, and layouts at 360px, 390px, and desktop; 23 tests pass and latest preview build is successful.
+- [ ] Verify saved progress, profile updates, and streamed mentor history across reloads (needs a student with a real confirmed email; reserved test email domains are rejected).
+
+## Curriculum delivery notes
+- Current topic material is introductory: non-DSA intermediate/advanced study guidance and practice prompts are not yet full individually authored courses.
+- Project briefs and self-reported completion are available; project submission assessment and arbitrary code execution are not implemented.
